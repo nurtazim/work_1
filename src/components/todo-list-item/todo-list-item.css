@@ -1,5 +1,6 @@
 .todo-list-item {
   font-size: 1.25rem;
+  word-wrap: break-word;
 }
 
 .todo-list-item button {
@@ -12,6 +13,7 @@
   line-height: 35px;
   cursor: pointer;
   user-select: none;
+  word-wrap:break-word;
 }
 
 .todo-list-item.done .todo-list-item-label {
