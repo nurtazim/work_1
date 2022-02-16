@@ -8,7 +8,6 @@ class TodoAdd extends React.Component {
         label: ''
     }
 
-
     onValueChange = (text) => {
         this.setState({
             label: text.toLowerCase()
@@ -21,18 +20,16 @@ class TodoAdd extends React.Component {
         if (this.state.label === "") {
             alert("заполните форму")
         }
+
         else {
             this.props.addNewTodo(this.state.label)
             this.state.label = "";
         }
 
-
     }
 
 
     render() {
-
-
         return (
             <div>
                 <form className={"form-control form"} onSubmit={this.onAddNewTodo}>
