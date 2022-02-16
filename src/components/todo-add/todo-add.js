@@ -1,39 +1,50 @@
 import React from 'react';
 
+import './todoAdd.css';
+
 
 class TodoAdd extends React.Component {
-  state = {
-    label: ''
-  }
+    state = {
+        label: ''
+    }
 
-  onValueChange = (text) => {
-    this.setState({
-      label: text.toLowerCase()
-    })
-  }
+    onValueChange = (text) => {
+        this.setState({
+            label: text.toLowerCase()
+        })
+    }
 
-  onAddNewTodo = (event) => {
-    event.preventDefault();
-    this.props.addNewTodo(this.state.label)
-  }
+    onAddNewTodo = (event) => {
 
-  render() {
-    console.log(this.state.label)
+        event.preventDefault();
+        if (this.state.label === "") {
+            alert("заполните форму")
+        }
 
-    return (
-      <div>
-        <form onSubmit={this.onAddNewTodo}>
-          <input
-            onChange={(event) => this.onValueChange(event.target.value)}
-            value={this.state.label}
-            type='text'
-            placeholder='Feel the todo'
-          />
-          <input type='submit' value='Add' />
-        </form>
-      </div>
-    )
-  }
+        else {
+            this.props.addNewTodo(this.state.label)
+            this.state.label = "";
+        }
+
+    }
+
+
+    render() {
+        return (
+            <div>
+                <form className={"form-control form"} onSubmit={this.onAddNewTodo}>
+                    <input
+                        className="form-control add-input"
+                        onChange={(event) => this.onValueChange(event.target.value)}
+                        value={this.state.label}
+                        type='text'
+                        placeholder='Feel the todo'
+                    />
+                    <input type='submit' value='Add' className="form-control add-button"/>
+                </form>
+            </div>
+        )
+    }
 }
 
 export default TodoAdd;
